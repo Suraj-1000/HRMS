@@ -61,6 +61,11 @@
             </script>
         </div>  
 
+        <div class="ss">
+            <h2>Attendance</h2>
+        </div>
+        
+
         <div class="searchbar">
             <form method="post">
                 <input type="text" placeholder="Search......" id="searchbar" name="searchbar">

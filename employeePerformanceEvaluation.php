@@ -71,7 +71,7 @@
             </div>
 
             <div class="action">
-                <form method="post" action="form.php"> <!-- Added action attribute to redirect to form.php -->
+                <form method="post" action="form.php"> 
                     <button type="submit">Form</button>
                 </form>
 

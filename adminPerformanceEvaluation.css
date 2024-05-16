@@ -186,14 +186,14 @@ section{
 }
 
 .report {
-    grid-column-start: 4;
-    grid-column-end: 10;
+    grid-column-start: 3;
+    grid-column-end: 16;
     grid-row-start: 2;
-    grid-row-end: 7;
+    grid-row-end: 9;
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
+    top: 30px;
+    left: 120px;
     height: 100%;
     width: 100%;
     z-index: 1;
@@ -207,36 +207,43 @@ section{
     color: #fff;
     box-shadow: 2px 2px 9px 1px #686060;
     height: 200px;
-    width: 100%;
-    max-width: 600px;
+    width: 130%;
     margin: 20px auto;
     padding-top: 10px;
     border-radius: 5px;
     overflow: hidden;
     overflow-y: scroll;
 }
-.content table{
+
+.report .content table {
     width: 100%;
+    text-align: center;
+    border-collapse: collapse; 
 }
+
+.report .content table th {
+    color: rgb(47, 55, 85);
+    background-color: #fff;
+    padding: 10px; 
+    bottom:11px;
+    position: relative;
+}
+
+.report .content table td {
+    padding: 8px; 
+}
+
 
 .report .footer button {
     height: 30px;
-    width: 40px;
+    width: 90px;
     border-radius: 5px;
     border: none;
     box-shadow: 2px 2px 9px 1px #808080;
     background-color: rgb(47, 55, 85);
     color: #fff;
     position: relative;
-    top: 60px;
-    left: 65%;
     top: 20px;
     left: 118%;
 }
 
-.content table #heading{
-    color: rgb(47, 55, 85);
-    background-color: #fff;
-    position: relative;
-    bottom: 11px;
-}

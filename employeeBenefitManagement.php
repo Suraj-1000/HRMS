@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benefits</title>
-<<<<<<< HEAD
     <link href="employeeBenefitManagement.css" rel="stylesheet">
-=======
-    <link href="employeeBenefitManagement.css" rel="stylesheet"> 
->>>>>>> 3630c1f10ac08e9c42de791eda1a5518026b1118
 </head>
 <body>
 <header>

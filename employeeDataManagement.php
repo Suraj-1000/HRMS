@@ -64,6 +64,10 @@
                 }
             </script>
         </div>    
+        <div class="searchSection">
+            <input type="text" id="searchbar" name="searchbar" placeholder="Search....">
+            <button onclick="searchEmployees()"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+        </div>
 
         <div class="content">
             <table id="employeeTable">
@@ -130,7 +134,8 @@
                     }
                 }
             }
-   
+
+
     </script>
 
 </body>

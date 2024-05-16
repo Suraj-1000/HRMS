@@ -108,7 +108,7 @@
                 VALUES ('$fullname', '$address', '$contact', '$gender', '$emergencyName', '$emergencyAddress', '$emergencyContact', '$title', '$department', '$supervisor', '$workLocation', '$startDate', '$salary', '$role', '$image_data')";
 
                 if (mysqli_query($conn, $sql)) {
-                    $message = "New record created successfully";
+                    echo "<script>alert('New record created successfully.');</script>";
                     
                     $_POST['fullname'] = $_POST['address'] = $_POST['contact'] = $_POST['gender'] = $_POST['name'] = $_POST['emergencyAddress'] = $_POST['emergencyContact'] = $_POST['title'] = $_POST['department'] = $_POST['supervisor'] = $_POST['workLocation'] = $_POST['startDate'] = $_POST['salary'] = $_POST['role'] = "";
                     
@@ -116,6 +116,8 @@
                     exit;
                 } else {
                     $error = "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    echo "<script>alert('Error failed: " . mysqli_error($conn) . "');</script>";
+
                 }
             }
         }

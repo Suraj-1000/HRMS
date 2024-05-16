@@ -28,8 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['search'])) {
         $insurance = $row['insurance'];
         $totalDeduction = $row['total_deduction'];
     } else {
-  
-        $error = "Employee not found!";
+        echo "<script>alert('Employee not found.');</script>";
     }
 }
 
@@ -39,11 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
 
     $delete_sql = "DELETE FROM payroll WHERE employee_name='$name'";
     if (mysqli_query($conn, $delete_sql)) {
-
-        $message = "Payroll data deleted successfully";
+        echo "<script>alert('Payroll data deleted successfully.');</script>";
     } else {
-
-        $error = "Error deleting record: " . mysqli_error($conn);
+        echo "<script>alert('Error deleting record failed: " . mysqli_error($conn) . "');</script>"; 
     }
 }
 
@@ -92,7 +89,7 @@ mysqli_close($conn);
             <button id="employeeDataManagement" onclick="edm()">Employee Data Management</button>
             <button id="payroll" onclick="pm()">Payroll Management</button>
             <button id="Benefits" onclick="bm()">Benefits Management</button>
-            <button id="performanceEvaluation" onclick="bm()">Performance Evaluation</button>
+            <button id="performanceEvaluation" onclick="cm()">Performance Evaluation</button>
             <button id="logout" onclick="ae()">Logout</button>
 
             <script>
@@ -111,6 +108,11 @@ mysqli_close($conn);
                 function bm(){
                     location = 'adminBenefitManagementSystem.php';
                 }
+
+                function cm(){
+                    location = 'adminPerformanceEvaluation.php';
+                }
+
 
                 function ae(){
                     location = 'index.html';

@@ -59,9 +59,9 @@
         <nav>
             <a href="adminDashboard.php" id="home">Home</a>
             <a href="adminEmployeeDataManagement.php" id="edm">Employee Data Management</a>
-            <a href="#" id="pm">Payroll Management</a>
-            <a href="#" id="con">Benefits Management</a>
-            <a href="#" id="pe">Performance Evaluations</a>
+            <a href="adminEmployeePayroll.php" id="pm">Payroll Management</a>
+            <a href="adminBenefitManagementSystem.php" id="con">Benefits Management</a>
+            <a href="adminPerformanceEvaluation.php" id="pe">Performance Evaluations</a>
         </nav>
     </header>
 
@@ -98,7 +98,7 @@
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
         } else {
-            echo "No results found for the given name.";
+            echo "<script>alert('No results found for the given name.');</script>";
         }
 
         mysqli_close($conn);
@@ -119,7 +119,8 @@
             echo "<script>alert('Record deleted successfully'); window.location.href = 'adminEmployeeDataManagement.php';</script>";
             exit;
         } else {
-            echo "Error deleting record: " . mysqli_error($conn);
+            echo "<script>alert('Error deleting record failed: " . mysqli_error($conn) . "');</script>";
+
         }
 
         mysqli_close($conn);

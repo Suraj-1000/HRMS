@@ -30,7 +30,6 @@ function bm(){
     location = "adminBenefitManagementSystem.php";
 }
 
-<<<<<<< HEAD
 function pe(){
     location = "adminPerformanceEvaluation.php";
 }
@@ -38,8 +37,3 @@ function pe(){
 function evaluate(){
     location = "performanceReview.php";
 }
-=======
-function eac(){
-    location = 'employeeAttendanceChecker.php';
-}
->>>>>>> 3630c1f10ac08e9c42de791eda1a5518026b1118

@@ -16,9 +16,9 @@
         <nav>
             <a href="adminDashboard.php" id="home">Home</a>
             <a href="adminEmployeeDataManagement.php" id="edm">Employee Data Management</a>
-            <a href="#" id="pm">Payroll Management</a>
-            <a href="#" id="con">Benefits Management</a>
-            <a href="#" id="pe">Performance Evaluations</a>
+            <a href="adminEmployeePayroll.php" id="pm">Payroll Management</a>
+            <a href="adminBenefitManagementSystem.php" id="con">Benefits Management</a>
+            <a href="adminPerformanceEvaluation.php" id="pe">Performance Evaluations</a>
         </nav>
     </header>
 
@@ -37,27 +37,6 @@
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
             return $data;
-        }
-
-        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['search'])) {
-            $conn = mysqli_connect("localhost", "root", "", "HRMS");
-
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-
-            $search_query = $_GET['search'];
-
-            $sql = "SELECT * FROM table_1 WHERE fullname LIKE '%$search_query%'";
-            $result = mysqli_query($conn, $sql);
-
-            if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-            } else {
-                echo "<script>alert('No results found for the given name.');</script>";
-            }
-
-            mysqli_close($conn);
         }
 
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['search'])) {
@@ -109,7 +88,8 @@
             if (mysqli_query($conn, $sql)) {
                 echo "<script>alert('Record updated successfully');</script>";
             } else {
-                echo "Error updating record: " . mysqli_error($conn);
+                echo "<script>alert('Error updating record failed: " . mysqli_error($conn) . "');</script>";
+
             }
     
             mysqli_close($conn);

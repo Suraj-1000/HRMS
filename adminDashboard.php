@@ -86,11 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button id="employeeDataManagement" onclick="edm()">Employee Data Management</button>
             <button id="payroll" onclick="pm()">Payroll Management</button>
             <button id="Benefits" onclick="bm()">Benefits Management</button>
-<<<<<<< HEAD
-            <button id="performanceEvaluation" onclick="pe()">Performance Evaluation</button>
-=======
             <button id="performanceEvaluation" onclick="cm()">Performance Evaluation</button>
->>>>>>> 3630c1f10ac08e9c42de791eda1a5518026b1118
             <button id="logout" onclick="ae()">Logout</button>
 
             <script>
@@ -126,23 +122,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     location = 'adminPerformanceEvaluation.php';
                 }
             </script>
-        </div>    
+        </div>
         <?php
-                $conn = new mysqli("localhost", "root", "", "HRMS");
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+            $conn = new mysqli("localhost", "root", "", "HRMS");
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
-                $sql = "SELECT COUNT(*) as total FROM table_1";
+            $sql = "SELECT COUNT(*) as total FROM table_1";
 
-                $result = $conn->query($sql);
-                $row = $result->fetch_assoc();
-                $totalUsers = $row['total'];
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+            $totalUsers = $row['total'];
 
-                echo "<p id='numOfUser'>" . $totalUsers . "</p>";
-
-                $conn->close();
-                ?>
+            $conn->close();
+        ?>
         <div class="content1">
             <div class="totalEmployees">
                 <i class="fa-solid fa-users" style="color: #fff;"></i>
@@ -150,8 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <p id="employees"><?php echo $totalUsers; ?></p>
             
-
-                <?php
+            <?php
                  $conn = new mysqli("localhost", "root", "", "HRMS");
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
@@ -181,8 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>Male: </p>
                     <p><?php echo $male_count; ?></p>
                 </div>
-
-        </div>
+        </div>  
 
         <?php
         $conn = new mysqli("localhost", "root", "", "HRMS");
@@ -221,14 +213,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Query to calculate the sum of net pay from the payroll table
         $sql = "SELECT SUM(net_pay) as total_net_pay FROM payroll";
 
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
         $totalNetPay = $row['total_net_pay'];
 
-        // Display the total net pay
         echo "<p id='grossNetProfit'>" . $totalNetPay . "</p>";
 
         $conn->close();
@@ -244,8 +234,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-
-            // Query to count the number of employees marked as present
             $sql_present = "SELECT COUNT(*) as present_count FROM attendance WHERE status = 'P'";
             $result_present = $conn->query($sql_present);
             $row_present = $result_present->fetch_assoc();
@@ -265,7 +253,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            // Query to count the number of employees marked as absent
             $sql_absent = "SELECT COUNT(*) as absent_count FROM attendance WHERE status = 'A'";
             $result_absent = $conn->query($sql_absent);
             $row_absent = $result_absent->fetch_assoc();
@@ -287,84 +274,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         
         <div class="content5">
-            <div class="searchSection">
-                <form method="post">
-                    <input type="text" id="searchbar" name="searchbar" placeholder="Search.....">
-                    <button type="submit"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
-                </form>
-            </div>
+        <div class="searchSection">
+            <input type="text" id="searchbar1" name="searchbar1" placeholder="Search....">
+            <button onclick="searchEmployees1()"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+        </div>
             <div class="employeePerformance">
-                <table>
+                <table id="petable">
                     <tr id="heading">
-                        <th>Avatar</th>
+                        <th>Eid</th>
                         <th>Name</th>
                         <th>Designation</th>
                         <th>Performance</th>
                     </tr>
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
-    
-                        
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
-                        
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
-                        
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
-    
-                        
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
+                    <?php
+                $conn = mysqli_connect("localhost", "root", "", "HRMS");
 
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
 
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
+                $sql = "SELECT * FROM pe";
+                $result = mysqli_query($conn, $sql);
 
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $eid = $row['id'];
+                        echo "<tr>";
+                        echo "<td>" . $row['eid'] . "</td>";
+                        echo "<td>" . $row['ename'] . "</td>";
+                        echo "<td>" . $row['role'] . "</td>";
+                        echo "<td>" . $row['pa'] . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>No employees found</td></tr>";
+                }
 
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
+                mysqli_close($conn);
+                ?>
                 </table>
         </div>
 
@@ -416,6 +363,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         
     </section>
+
+    <script>
+    function searchEmployees1() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchbar1");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("petable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            if (tr[i].id === "heading") continue;
+
+            var found = false;
+            td = tr[i].getElementsByTagName("td");
+            for (var j = 0; j < td.length; j++) {
+                var cell = td[j];
+                if (cell) {
+                    txtValue = cell.textContent || cell.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (found) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
 
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/4f9d824da5.js" crossorigin="anonymous"></script>

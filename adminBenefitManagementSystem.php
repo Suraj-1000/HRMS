@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['One'])){
     $stmt->bind_param('ssssssssss', $ip,$pn,$psd,$ped,$toc,$ca,$da,$cp,$np,$ec);
     if($stmt->execute()){
         header("Location: " . $_SERVER['REQUEST_URI']);
+        echo "<script>alert('Health & Dental Insurance Data Added Sucessfully.');</script>";
         exit();
     } else{
         echo "<script>alert('Insertion failed: " . $db->error . "');</script>";
@@ -80,6 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Two'])){
     $stmt->bind_param('ssssss', $ip1,$pn1,$psd1,$ped1,$ca1,$bene1);
     if($stmt->execute()){
         header("Location: " . $_SERVER['REQUEST_URI']);
+        echo "<script>alert('Life Insurance Data Added Sucessfully.');</script>";
         exit();
     } else{
         echo "<script>alert('Insertion failed: " . $db->error . "');</script>";
@@ -101,6 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Three'])){
     $stmt->bind_param('sssssssss', $ip,$pn,$psd,$ped,$stc,$ltc,$wp,$bwp,$ci);
     if($stmt->execute()){
         header("Location: " . $_SERVER['REQUEST_URI']);
+        echo "<script>alert('Short| Long Term Disability Data Added Sucessfully.');</script>";
         exit();
     } else{
         echo "<script>alert('Insertion failed: " . $db->error . "');</script>";
@@ -117,6 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Four'])){
     $stmt->bind_param('ssss', $sp,$services,$availability,$ci);
     if($stmt->execute()){
         header("Location: " . $_SERVER['REQUEST_URI']);
+        echo "<script>alert('Employee Assistance Data Added Sucessfully.');</script>";
         exit();
     } else{
         echo "<script>alert('Insertion failed: " . $db->error . "');</script>";
@@ -134,6 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Five'])){
     $stmt->bind_param('sssss', $type,$ar,$mal,$up,$ci);
     if($stmt->execute()){
         header("Location: " . $_SERVER['REQUEST_URI']);
+        echo "<script>alert('Lead Benefit Data Added Sucessfully.');</script>";
         exit();
     } else{
         echo "<script>alert('Insertion failed: " . $db->error . "');</script>";
@@ -149,6 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Six'])){
     $stmt->bind_param('sss',$tr,$pdp,$ci);
     if($stmt->execute()){
         header("Location: " . $_SERVER['REQUEST_URI']);
+        echo "<script>alert('Educational Benefits Data Added Sucessfully.');</script>";
         exit();
     } else{
         echo "<script>alert('Insertion failed: " . $db->error . "');</script>";
@@ -167,6 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Seven'])){
     $stmt->bind_param('ssssss',$pn,$pt,$ec,$vs,$io,$ci);
     if($stmt->execute()){
         header("Location: " . $_SERVER['REQUEST_URI']);
+        echo "<script>alert('Retriement Savings Data Added Sucessfully.');</script>";
         exit();
     } else{
         echo "<script>alert('Insertion failed: " . $db->error . "');</script>";
@@ -216,11 +223,7 @@ function validateInput($data) {
             <button id="employeeDataManagement" onclick="edm()">Employee Data Management</button>
             <button id="payroll" onclick="pm()">Payroll Management</button>
             <button id="Benefits" onclick="bm()">Benefits Management</button>
-<<<<<<< HEAD
-            <button id="performanceEvaluation" onclick="pe()">Performance Evaluation</button>
-=======
             <button id="performanceEvaluation" onclick="cm()">Performance Evaluation</button>
->>>>>>> 3630c1f10ac08e9c42de791eda1a5518026b1118
             <button id="logout" onclick="ae()">Logout</button>
 
             <script>

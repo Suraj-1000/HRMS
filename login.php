@@ -16,7 +16,7 @@
 
         <form method="post">
             <i class="fa-solid fa-envelope"></i>
-            <input type="email" placeholder="Email" id="email" name="email" required>
+            <input type="email" placeholder="@admin.edu/usergmail.com" id="email" name="email" required>
             <br>
             <i class="fa-solid fa-lock"></i>
             <input type="password" placeholder="password" id="password" name="password" required>
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo "<script>alert('Login Successfully'); window.location.href = 'adminDashboard.php';</script>";
                     exit;
                 } else {
-                    $error = "Invalid password. Please try again.";
+                    echo "<script>alert(\"Invalid password. Please try again.\")</script>";
                 }
             } elseif (strpos($email, '@usergmail.com') !== false) {
                 // User login
@@ -87,14 +87,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo "<script>alert('Login Successfully'); window.location.href = 'userDashboard.php';</script>";
                     exit;
                 } else {
-                    $error = "Invalid password. Please try again.";
+                    echo "<script>alert(\"Invalid password. Please try again.\")</script>";
                 }
             } else {
                 // Neither admin nor user domain
                 $error = "Invalid email domain.";
+                echo "<script>alert(\"Invalid email or password.\")</script>";
             }
         } else {
             $error = "User with this email does not exist. Please sign up.";
+            echo "<script>alert(\"$error\")</script>";
         }
     }
 }

@@ -35,7 +35,7 @@ if ($db->connect_error) {
 
     <section>
     <div class="sideNavbar">
-    <button id="dashboard" onclick="das()">Dashboard</button>
+            <button id="dashboard" onclick="das()">Dashboard</button>
             <button id="employeeDataManagement" onclick="am()">Employee Data Management</button>
             <button id="payroll" onclick="ab()">Payroll Management</button>
             <button id="Benefits" onclick="ac()">Benefits Management</button>
@@ -59,13 +59,8 @@ if ($db->connect_error) {
                     location = 'employeeBenefitManagement.php';
                 }
 
-<<<<<<< HEAD
-                function ad(){
-                    location = 'employeePerformance.php';
-=======
                 function oac(){
-                    location = 'employeeAttendanceChecker.php';
->>>>>>> 3630c1f10ac08e9c42de791eda1a5518026b1118
+                    location = 'employeeAttendanceAdd.php';
                 }
 
                 function ad(){
@@ -78,22 +73,20 @@ if ($db->connect_error) {
             </script>
         </div>    
 
-        <?php
-                $conn = new mysqli("localhost", "root", "", "HRMS");
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+         <?php
+            $conn = new mysqli("localhost", "root", "", "HRMS");
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
-                $sql = "SELECT COUNT(*) as total FROM table_1";
+            $sql = "SELECT COUNT(*) as total FROM table_1";
 
-                $result = $conn->query($sql);
-                $row = $result->fetch_assoc();
-                $totalUsers = $row['total'];
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+            $totalUsers = $row['total'];
 
-                echo "<p id='numOfUser'>" . $totalUsers . "</p>";
-
-                $conn->close();
-                ?>
+            $conn->close();
+        ?>
         <div class="content1">
             <div class="totalEmployees">
                 <i class="fa-solid fa-users" style="color: #fff;"></i>
@@ -101,8 +94,7 @@ if ($db->connect_error) {
             </div>
             <p id="employees"><?php echo $totalUsers; ?></p>
             
-
-                <?php
+            <?php
                  $conn = new mysqli("localhost", "root", "", "HRMS");
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
@@ -132,8 +124,7 @@ if ($db->connect_error) {
                     <p>Male: </p>
                     <p><?php echo $male_count; ?></p>
                 </div>
-
-        </div>
+        </div>  
 
         <?php
         $conn = new mysqli("localhost", "root", "", "HRMS");
@@ -237,40 +228,45 @@ if ($db->connect_error) {
 
         
         <div class="content5">
-            <div class="searchSection">
-                <form method="post">
-                    <input type="text" id="searchbar" name="searchbar" placeholder="Search.....">
-                    <button type="submit"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
-                </form>
-            </div>
+        <div class="searchSection">
+            <input type="text" id="searchbar1" name="searchbar1" placeholder="Search....">
+            <button onclick="searchEmployees1()"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></button>
+        </div>
             <div class="employeePerformance">
-                <table>
+                <table id="petable">
                     <tr id="heading">
-                        <th>Avatar</th>
+                        <th>Eid</th>
                         <th>Name</th>
                         <th>Designation</th>
                         <th>Performance</th>
                     </tr>
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Bijay Gurung</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>               
+                    <?php
+                $conn = mysqli_connect("localhost", "root", "", "HRMS");
 
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Suraj Kanwar</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
 
-                        <tr id="data1">
-                            <td><img src="./Images/Bijay.jpg" height="40px" width="40px"></td>
-                            <td>Isbin Shrestha</td>
-                            <td>Fullstack Developer</td>
-                            <td><button>Excellent</button></td>
-                        </tr>
+                $sql = "SELECT * FROM pe";
+                $result = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $eid = $row['id'];
+                        echo "<tr>";
+                        echo "<td>" . $row['eid'] . "</td>";
+                        echo "<td>" . $row['ename'] . "</td>";
+                        echo "<td>" . $row['role'] . "</td>";
+                        echo "<td>" . $row['pa'] . "</td>";
+                        echo "</tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>No employees found</td></tr>";
+                }
+
+                mysqli_close($conn);
+                ?>
+
                 </table>
         </div>
 
@@ -293,6 +289,38 @@ if ($db->connect_error) {
             ?>
         </div>
     </section>
+
+    <script>
+    function searchEmployees1() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchbar1");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("petable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            if (tr[i].id === "heading") continue;
+
+            var found = false;
+            td = tr[i].getElementsByTagName("td");
+            for (var j = 0; j < td.length; j++) {
+                var cell = td[j];
+                if (cell) {
+                    txtValue = cell.textContent || cell.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (found) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
 
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/4f9d824da5.js" crossorigin="anonymous"></script>

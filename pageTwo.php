@@ -120,7 +120,8 @@
                 if (mysqli_query($conn, $sql)) {
                     echo "<script>alert('Employee details added successfully');</script>";
                 } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    echo "<script>alert('Error failed: " . mysqli_error($conn) . "');</script>";
+
                 }
 
                 mysqli_close($conn);

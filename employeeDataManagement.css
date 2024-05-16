@@ -147,7 +147,41 @@ td i{
     margin-top: 40px;
     grid-column-start: 4;
     grid-column-end: 15;
-    grid-row-start: 1;
-    grid-row-end: 7;
+    grid-row-start: 7;
+    grid-row-end: 2;
     color: #fff;
+}
+
+.searchSection{
+    display: flex;
+    grid-column-start: 6;
+    grid-column-end: 14;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin-top: 30px;
+}
+
+.searchSection input{
+    height: 30px;
+    width: 230px;
+    background-color: rgb(47, 55, 85);
+    color: #fff;
+    border-radius: 9px;
+    margin-left: 120px;    
+}
+
+.searchSection ::placeholder{
+    color: #fff;
+    opacity: 1;
+}
+
+.searchSection button{
+    height: 30px;
+    width: 50px;
+    border: none;
+    border-radius: 9px;
+    background-color: rgb(47, 55, 85);
+    color: #fff;
+    box-shadow: 2px 2px 9px #aaa;
+    margin-left: 30px;
 }
